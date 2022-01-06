@@ -72,10 +72,10 @@ class Customers extends AbstractAppTable
     // }
     public static function List(?int $status = null): array
     {
-        $query = 'WHERE 1 ORDER BY `name` ASC';
+        $query = 'WHERE 1 ORDER BY `id` ASC';
         $queryData = null;
         if (is_int($status) && $status > 0) {
-            $query = 'WHERE `status`=? ORDER BY `name` ASC';
+            $query = 'WHERE `status`=? ORDER BY `id` ASC';
             $queryData = [$status];
         }
 
