@@ -41,9 +41,9 @@ class Post extends AbstractAppModel
     /**
      * @throws AppException
      */
-    public function beforeQuery()
-    {
-      parent::onSerialize();   
-    }
+    // public function beforeQuery()
+    // {
+        
+    // }
     
 }
