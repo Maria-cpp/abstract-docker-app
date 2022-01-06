@@ -13,7 +13,7 @@ use App\Common\Users\User;
 use Comely\Database\Schema;
 use Comely\DataTypes\Integers;
 
-class PostsData extends AbstractSessionAPIController{
+class Userposts extends AbstractSessionAPIController{
 
     /**
      * @throws API_Exception
