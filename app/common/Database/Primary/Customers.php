@@ -70,7 +70,7 @@ class Customers extends AbstractAppTable
     //         throw new AppException('No such customer is available');
     //     }
     // }
-    public static function List(?int $status = null): array
+    public static function List(?string $status = null): array
     {
         $query = 'WHERE 1 ORDER BY `id` ASC';
         $queryData = null;

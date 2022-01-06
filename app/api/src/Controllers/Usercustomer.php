@@ -38,7 +38,7 @@ class Usercustomer extends AbstractSessionAPIController
      */
     public function get(): void
     {
-        $Customers = \App\Common\Database\Primary\Customers::List(1);
+        $Customers = \App\Common\Database\Primary\Customers::List("active");
 
         $this->status(true);
         $this->response()->set("Customers", $Customers);
