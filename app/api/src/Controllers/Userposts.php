@@ -76,8 +76,8 @@ class Userposts extends AbstractSessionAPIController{
         // Author
         try {
             $author_name = trim(strval($this->input()->get("author_name")));
-            if (!$author) {
-                $author="user";
+            if (!$author_name) {
+                $author_name="Zeenat Usman";
             }elseif (strlen($author_name) > 20) {
                 throw new API_Exception('AUTHOR_LEN');
             }elseif (!preg_match('/^[a-z]+(\s[a-z]+)*$/i', $author_name)) {
