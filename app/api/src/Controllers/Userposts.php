@@ -112,7 +112,6 @@ class Userposts extends AbstractSessionAPIController{
             $post->category = $category;
             $post->created_at = time();
             $post->author_name = $author_name;
-            $post->author = 1;
             $post->image_url="null";
             $post->updated_at=time();
             // $post->author = User::CACHE_KEY_USERNAME;
