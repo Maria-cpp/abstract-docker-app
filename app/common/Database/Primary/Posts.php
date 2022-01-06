@@ -38,8 +38,8 @@ class Posts extends AbstractAppTable
         $cols->string("image_url")->length(255)
             ->charset("utf8mb4")->collation("uft8mb4_0900_ai_ci");        
      
-        $cols->timestamp("created_at")->bytes(4)->unSigned();
-        $cols->timestamp("updated_at")->bytes(4)->unSigned();
+        $cols->int("created_at")->bytes(4)->unSigned();
+        $cols->int("updated_at")->bytes(4)->unSigned();
         $cols->string("category")->length(255)
         ->charset("utf8mb4")->collation("uft8mb4_0900_ai_ci");
         $constraints->foreignKey("user_id")->table(Users::NAME, "id");
