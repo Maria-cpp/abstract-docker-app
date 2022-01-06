@@ -27,8 +27,10 @@ class Post extends AbstractAppModel
     public string $title;
     /** @var string */
     public string $content;
-     /** @var string */
-     public string $author;
+     /** @var int */
+     public int $author;
+    /** @var string */
+    public string $author_name;
     /** @var string */
     public string $image_url;
      /** @var string */

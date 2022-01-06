@@ -32,7 +32,7 @@ class Userposts extends AbstractSessionAPIController{
      */
     public function get(): void
     {
-        $Posts = Posts::List("php");
+        $Posts = Posts::List("Abstract Docker App");
 
         $this->status(true);
         $this->response()->set("Posts", $Posts);
@@ -75,16 +75,16 @@ class Userposts extends AbstractSessionAPIController{
 
         // Author
         try {
-            $author = trim(strval($this->input()->get("author")));
+            $author_name = trim(strval($this->input()->get("author_name")));
             if (!$author) {
                 $author="user";
-            }elseif (strlen($author) > 20) {
+            }elseif (strlen($author_name) > 20) {
                 throw new API_Exception('AUTHOR_LEN');
-            }elseif (!preg_match('/^[a-z]+(\s[a-z]+)*$/i', $author)) {
+            }elseif (!preg_match('/^[a-z]+(\s[a-z]+)*$/i', $author_name)) {
                 throw new API_Exception('AUTHOR_NAME_INVALID');
             }
         } catch (AppException $e) {
-            $e->setParam("author");
+            $e->setParam("author_name");
             throw $e;
         }
 
@@ -111,7 +111,8 @@ class Userposts extends AbstractSessionAPIController{
             $post->content = $content;
             $post->category = $category;
             $post->created_at = time();
-            $post->author = $author;
+            $post->author_name = $author_name;
+            $post->author = 1;
             $post->image_url="null";
             $post->updated_at=time();
             // $post->author = User::CACHE_KEY_USERNAME;

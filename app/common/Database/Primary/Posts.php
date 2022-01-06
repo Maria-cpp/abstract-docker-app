@@ -31,7 +31,10 @@ class Posts extends AbstractAppTable
 
         $cols->int("id")->bytes(4)->unSigned()->autoIncrement();
         $cols->int("author")->bytes(4)->unSigned()->nullable();
-        
+       
+        $cols->string("author_name")->length(255)
+            ->charset("utf8mb4")->collation("utf8mb4_general_ci");
+
         $cols->string("title")->length(255)
             ->charset("utf8mb4")->collation("utf8mb4_general_ci");
 
