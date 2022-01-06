@@ -27,6 +27,8 @@ class Usercustomer extends AbstractSessionAPIController
     public function sessionAPICallback(): void
     {
         $db = $this->app->db()->primary();
+        Schema::Bind($db, 'App\Common\Database\Primary\Customers');
+
     }
 
     /**

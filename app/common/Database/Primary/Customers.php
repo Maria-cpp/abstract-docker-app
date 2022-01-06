@@ -49,9 +49,10 @@ class Customers extends AbstractAppTable
     /**
      * @param int $id
      * @param bool $cache
-     * @return User
+     * @return Customer
      * @throws AppException
      */
+
     // public static function get(int $id): Customer
     // {
     //     $k = Kernel::getInstance();
@@ -66,7 +67,7 @@ class Customers extends AbstractAppTable
     //             $k->errors()->triggerIfDebug($e, E_USER_WARNING);
     //         }
 
-    //         throw new AppException('No such country is available');
+    //         throw new AppException('No such customer is available');
     //     }
     // }
     public static function List(?int $status = null): array
