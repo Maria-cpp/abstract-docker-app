@@ -27,6 +27,8 @@ class Post extends AbstractAppModel
     public string $title;
     /** @var string */
     public string $content;
+     /** @var string */
+     public string $author;
     /** @var string */
     public string $image_url;
      /** @var string */
@@ -41,7 +43,7 @@ class Post extends AbstractAppModel
      */
     public function beforeQuery()
     {
-        
+      parent::onSerialize();   
     }
     
 }

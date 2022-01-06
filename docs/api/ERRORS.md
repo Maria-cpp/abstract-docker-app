@@ -58,3 +58,11 @@ RECOVER_REQ_TIMEOUT | Account recovery was requested less than 15 minutes ago | 
 RECOVER_CODE_REQ | Recovery code is required | Focus on field
 RECOVER_CODE_INVALID | Recovery code is incorrect | Focus on field
 RECOVER_CODE_EXPIRED | Account recovery code has expired | Redirect to recover screen
+CATEGORY_LEN | Category Length should be maximum 50
+CONTENT_LEN | Content Length should be minimum 100 and max 1000 |Focus on input field
+CONTENT_REQ | Content is required | Focus on input field 
+TITLE_LEN | Title Length should be minimum 5 and max 50 |Focus on input field
+TITLE_REQ | Title is required | Focus on input field 
+TITLE_INVALID | Title contains an illegal character | Focus in input field
+AUTHOR_NAME_INVALID | Author name contains an illegal character | Focus in input field
+AUTHOR_LEN | Author Length should be minimum 3 and max 20 |Focus on input field

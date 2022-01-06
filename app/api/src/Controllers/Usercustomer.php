@@ -198,18 +198,6 @@ class Usercustomer extends AbstractSessionAPIController
                 throw new AppControllerException('Failed to insert user row');
             });
 
-            // $customer->id = Validator::UInt($db->lastInsertId()) ?? 0;
-            // if (!$customer->id) {
-            //     throw new AppControllerException('Invalid user last insert ID');
-            // }
-
-            // // Save Changes
-            // $customer->query()->where('id', $customer->id)->update(function () {
-            //     throw new AppControllerException('Failed to finalise user row');
-            // });
-
-            // $customer->log("signup", null, null, null, ["signup"]);
-
             $db->commit();
         } catch (AppException $e) {
             $db->rollBack();

@@ -74,7 +74,7 @@ class Customers extends AbstractAppTable
     {
         $query = 'WHERE 1 ORDER BY `id` ASC';
         $queryData = null;
-        if (is_int($status) && $status > 0) {
+        if (is_string($status) && $status !="") {
             $query = 'WHERE `status`=? ORDER BY `id` ASC';
             $queryData = [$status];
         }

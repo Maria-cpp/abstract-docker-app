@@ -52,4 +52,22 @@ class Posts extends AbstractAppTable
         $constraints->foreignKey("author")->table(Users::NAME, "id");
     }
    
+
+    public static function List(?string $title = null): array
+    {
+        $query = 'WHERE 1 ORDER BY `id` ASC';
+        $queryData = null;
+        if (is_string($title) && $title !="") {
+            $query = 'WHERE `title`=? ORDER BY `id` ASC';
+            $queryData = [$title];
+        }
+
+        try {
+            return Posts::Find()->query($query, $queryData)->all();
+        } catch (\Exception $e) {
+            Kernel::getInstance()->errors()->trigger($e, E_USER_WARNING);
+        }
+
+        return [];
+    }
 }
