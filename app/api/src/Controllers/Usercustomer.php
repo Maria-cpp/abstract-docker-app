@@ -181,8 +181,6 @@ class Usercustomer extends AbstractSessionAPIController
         // Insert Customer?
         try {
             $db->beginTransaction();
-
-            $apiHmacSecret = Passwords::Generate(16);
             $customer = new Customer();
             $customer->id = 0;
             $customer->status = "active";

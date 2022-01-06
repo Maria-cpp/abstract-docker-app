@@ -32,7 +32,7 @@ class Posts extends AbstractAppTable
         $cols->int("id")->bytes(4)->unSigned()->autoIncrement();
         $cols->int("author")->bytes(4)->unSigned()->nullable();
        
-        $cols->string("author_name")->length(255)
+        $cols->string("author_name")->length(50)
             ->charset("utf8mb4")->collation("utf8mb4_general_ci");
 
         $cols->string("title")->length(255)
@@ -41,13 +41,12 @@ class Posts extends AbstractAppTable
         $cols->string("content")->length(512)
             ->charset("utf8mb4")->collation("utf8mb4_general_ci");
         
-        $cols->string("image_url")->length(255)
-            ->charset("utf8mb4")->collation("utf8mb4_general_ci")->nullable();        
+        $cols->string("image_url")->length(100)->nullable();        
      
         $cols->int("created_at")->bytes(4)->unSigned();
         $cols->int("updated_at")->bytes(4)->unSigned()->nullable();
 
-        $cols->string("category")->length(255)
+        $cols->string("category")->length(100)
             ->charset("utf8mb4")->collation("utf8mb4_general_ci")->default("general");
 
         $cols->primaryKey("id");
