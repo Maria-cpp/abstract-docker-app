@@ -78,6 +78,6 @@ class PostCategory extends AbstractSessionAPIController
         }
 
         $this->status(true);
-        $this->response()->set("category", $category);
+        $this->response()->set("postcategory", $category);
     }
 }
