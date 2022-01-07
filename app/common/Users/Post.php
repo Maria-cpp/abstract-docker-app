@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Common\Posts;
+namespace App\Common\Users;
 
 use App\Common\Database\AbstractAppModel;
 use App\Common\Database\Primary\Posts;
