@@ -5,7 +5,7 @@ namespace App\API\Controllers;
 
 use App\Common\Config\ProgramConfig;
 use App\Common\Database\Primary\Posts;
-use App\Common\Posts\Post;
+use App\Common\Post;
 use App\Common\Exception\API_Exception;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
