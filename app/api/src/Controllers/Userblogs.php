@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\API\Controllers;
 
-use App\Common\Blogs\Blog;
+use App\Common\Blog;
 use App\Common\Exception\API_Exception;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
@@ -130,6 +130,6 @@ class Userblogs extends AbstractSessionAPIController
         }
 
         $this->status(true);
-        $this->response()->set("customer", $blog);
+        $this->response()->set("blog", $blog);
     }
 }
