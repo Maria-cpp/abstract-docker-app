@@ -35,7 +35,7 @@ class PostCategory extends AbstractSessionAPIController
         $postcategory = \App\Common\Database\Primary\PostsCategory::List("general");
 
         $this->status(true);
-        $this->response()->set("postcategory", $postcategory);
+        $this->response()->set("PostsCategory", $postcategory);
     }
 
     public function post(): void
@@ -78,6 +78,6 @@ class PostCategory extends AbstractSessionAPIController
         }
 
         $this->status(true);
-        $this->response()->set("postcategory", $category);
+        $this->response()->set("category", $category);
     }
 }

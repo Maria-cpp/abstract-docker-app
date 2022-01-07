@@ -36,7 +36,7 @@ class Userposts extends AbstractSessionAPIController{
         $Posts = Posts::List("Abstract Docker App");
 
         $this->status(true);
-        $this->response()->set("Posts", $Posts);
+        $this->response()->set("userposts", $Posts);
     }
 
 
