@@ -36,10 +36,6 @@ class Customer extends AbstractAppModel
     public int $timeStamp;
 
     /**
-     * @return void
-     */
-
-    /**
      * @return string|null
      * @throws AppException
      */

@@ -6,7 +6,6 @@ namespace App\Common\Database\Primary;
 use App\Common\Database\AbstractAppTable;
 use App\Common\Exception\AppException;
 use App\Common\Kernel;
-use App\Common\Posts\Post;
 use Comely\Database\Exception\ORM_ModelNotFoundException;
 use Comely\Database\Schema\Table\Columns;
 use Comely\Database\Schema\Table\Constraints;

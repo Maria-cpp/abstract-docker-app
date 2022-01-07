@@ -9,6 +9,8 @@ use App\Common\Posts\Post;
 use App\Common\Exception\API_Exception;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
+use App\Common\Packages\ReCaptcha\ReCaptcha;
+use App\Common\Validator;
 use App\Common\Users\User;
 use Comely\Database\Schema;
 use Comely\DataTypes\Integers;
@@ -45,6 +47,31 @@ class Userposts extends AbstractSessionAPIController{
         Schema::Bind($db, 'App\Common\Database\Primary\Users');
         Schema::Bind($db, 'App\Common\Database\Primary\Posts');
 
+        // ReCaptcha Validation
+        if ($this->isReCaptchaRequired()) {
+            try {
+                $reCaptchaRes = $this->input()->get("reCaptchaRes");
+                if (!$reCaptchaRes || !is_string($reCaptchaRes)) {
+                    throw new API_Exception('RECAPTCHA_REQ');
+                }
+
+                $programConfig = ProgramConfig::getInstance();
+                $reCaptchaSecret = $programConfig->reCaptchaPrv;
+                if (!$reCaptchaSecret || !is_string($reCaptchaSecret)) {
+                    throw new AppException('ReCaptcha secret was not available');
+                }
+
+                try {
+                    ReCaptcha::Verify($reCaptchaSecret, $reCaptchaRes, $this->ipAddress);
+                } catch (\Exception $e) {
+                    throw new API_Exception('RECAPTCHA_FAILED');
+                }
+            } catch (API_Exception $e) {
+                $e->setParam("reCaptchaRes");
+                throw $e;
+            }
+        }
+
         // title
         try {
             $title = trim(strval($this->input()->get("title")));
@@ -73,7 +100,7 @@ class Userposts extends AbstractSessionAPIController{
             throw $e;
         }
 
-        // Author
+        // Author_name
         try {
             $author_name = trim(strval($this->input()->get("author_name")));
             if (!$author_name) {

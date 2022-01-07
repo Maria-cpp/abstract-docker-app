@@ -18,8 +18,7 @@ use Comely\DataTypes\Buffer\Binary;
 class Post extends AbstractAppModel
 {
     public const TABLE = Posts::NAME;
-    public const SERIALIZABLE = true;
-
+    // public const SERIALIZABLE = true;
 
     /** @var int */
     public int $id;
