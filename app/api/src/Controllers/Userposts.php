@@ -9,7 +9,7 @@ use App\Common\Exception\API_Exception;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
 use App\Common\Packages\ReCaptcha\ReCaptcha;
-use App\Common\Users\Post;
+use App\Common\Posts\Post;
 use App\Common\Validator;
 use Comely\Database\Schema;
 use Comely\DataTypes\Integers;
