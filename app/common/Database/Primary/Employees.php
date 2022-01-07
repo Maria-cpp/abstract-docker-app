@@ -55,7 +55,7 @@ class Employees extends AbstractAppTable
         }
 
         try {
-            return Customers::Find()->query($query, $queryData)->all();
+            return Employees::Find()->query($query, $queryData)->all();
         } catch (\Exception $e) {
             Kernel::getInstance()->errors()->trigger($e, E_USER_WARNING);
         }

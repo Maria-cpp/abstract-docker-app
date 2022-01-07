@@ -14,7 +14,7 @@ use Comely\DataTypes\Buffer\Binary;
  */
 class Employe extends AbstractAppModel
 {
-    public const TABLE = \App\Common\Database\Primary\Customers::NAME;
+    public const TABLE = \App\Common\Database\Primary\Employees::NAME;
 
     /** @var int */
     public int $id;    
