@@ -1,20 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Common\Posts;
+namespace App\Common\Blogs;
 
 use App\Common\Database\AbstractAppModel;
-use App\Common\Database\Primary\Posts;
 use App\Common\Exception\AppException;
 
 /**
- * Class Post
- * @package App\Common\Posts
+ * Class Blog
+ * @package App\Common\Blogs
  */
-class Post extends AbstractAppModel
+class Blog extends AbstractAppModel
 {
     public const TABLE = \App\Common\Database\Primary\Posts::NAME;
-    // public const SERIALIZABLE = true;
 
     /** @var int */
     public int $id;

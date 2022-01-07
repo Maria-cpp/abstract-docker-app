@@ -3,24 +3,19 @@ declare(strict_types=1);
 
 namespace App\API\Controllers;
 
-use App\Common\Config\ProgramConfig;
-use App\Common\Database\Primary\Posts;
-use App\Common\Post;
+use App\Common\Blogs\Blog;
 use App\Common\Exception\API_Exception;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
-use App\Common\Packages\ReCaptcha\ReCaptcha;
-use App\Common\Validator;
 use Comely\Database\Schema;
 use Comely\DataTypes\Integers;
 
 /**
- * Class Userposts
+ * Class Userblogs
  * @package App\API\Controllers
  */
-
-class Userposts extends AbstractSessionAPIController{
-
+class Userblogs extends AbstractSessionAPIController
+{
     /**
      * @throws API_Exception
      */
@@ -31,52 +26,27 @@ class Userposts extends AbstractSessionAPIController{
 
     }
 
-     /**
+    /**
      * @throws API_Exception
      * @throws AppException
      * @throws \Comely\Database\Exception\DatabaseException
      */
     public function get(): void
     {
-        $Posts = Posts::List("Abstract Docker App");
+        $postsdata = \App\Common\Database\Primary\Posts::List("Abstract docker App");
 
         $this->status(true);
-        $this->response()->set("userposts", $Posts);
+        $this->response()->set("PostData", $postsdata);
     }
-
 
     public function post(): void
     {
         $db = $this->app->db()->primary();
+        Schema::Bind($db, 'App\Common\Database\Primary\Users');
         Schema::Bind($db, 'App\Common\Database\Primary\Posts');
-
-        // ReCaptcha Validation
-        if ($this->isReCaptchaRequired()) {
-            try {
-                $reCaptchaRes = $this->input()->get("reCaptchaRes");
-                if (!$reCaptchaRes || !is_string($reCaptchaRes)) {
-                    throw new API_Exception('RECAPTCHA_REQ');
-                }
-
-                $programConfig = ProgramConfig::getInstance();
-                $reCaptchaSecret = $programConfig->reCaptchaPrv;
-                if (!$reCaptchaSecret || !is_string($reCaptchaSecret)) {
-                    throw new AppException('ReCaptcha secret was not available');
-                }
-
-                try {
-                    ReCaptcha::Verify($reCaptchaSecret, $reCaptchaRes, $this->ipAddress);
-                } catch (\Exception $e) {
-                    throw new API_Exception('RECAPTCHA_FAILED');
-                }
-            } catch (API_Exception $e) {
-                $e->setParam("reCaptchaRes");
-                throw $e;
-            }
-        }
-
-        // title
-        try {
+       
+         // title
+         try {
             $title = trim(strval($this->input()->get("title")));
             if (!$title) {
                 throw new API_Exception('TITLE_REQ');
@@ -135,19 +105,18 @@ class Userposts extends AbstractSessionAPIController{
         // Insert Post?
         try {
             $db->beginTransaction();
-            $post = new Post() ;
-            $post->id = 0;
-            $post->title = $title;
-            $post->content = $content;
-            $post->category = $category;
-            $post->created_at = time();
-            $post->author_name = $author_name;
-            $post->image_url="src/";
-            $post->updated_at=time();
-            // $post->author = User::CACHE_KEY_USERNAME;
+            $blog = new Blog();
+            $blog->id = 0;
+            $blog->title = $title;
+            $blog->content = $content;
+            $blog->category = $category;
+            $blog->created_at = time();
+            $blog->author_name = $author_name;
+            $blog->image_url="src/";
+            $blog->updated_at=time();
 
-            $post->query()->insert(function () {
-                throw new AppControllerException('Failed to insert post row');
+            $blog->query()->insert(function () {
+                throw new AppControllerException('Failed to insert user row');
             });
 
             $db->commit();
@@ -161,6 +130,6 @@ class Userposts extends AbstractSessionAPIController{
         }
 
         $this->status(true);
-        $this->response()->set("post", $post);
+        $this->response()->set("customer", $blog);
     }
 }

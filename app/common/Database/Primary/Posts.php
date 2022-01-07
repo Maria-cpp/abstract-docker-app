@@ -17,7 +17,7 @@ use Comely\Database\Schema\Table\Constraints;
 class Posts extends AbstractAppTable
 {
     public const NAME = 'posts';
-    public const MODEL = 'App\Common\Post';
+    public const MODEL = 'App\Common\Blogs\Blog';
     public const BINARY_OBJ_SIZE = 4096;
 
     /**

@@ -11,7 +11,7 @@ use Comely\Database\Schema\Table\Columns;
 use Comely\Database\Schema\Table\Constraints;
 
 /**
- * Class Users
+ * Class Employees
  * @package App\Common\Database\Primary
  */
 class Employees extends AbstractAppTable
