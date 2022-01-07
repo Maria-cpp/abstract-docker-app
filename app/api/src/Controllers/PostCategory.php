@@ -41,7 +41,7 @@ class PostCategory extends AbstractSessionAPIController
     public function post(): void
     {
         $db = $this->app->db()->primary();
-        Schema::Bind($db, 'App\Common\Database\Primary\PostCategory');
+        Schema::Bind($db, 'App\Common\Database\Primary\PostsCategory');
         
         // category name
         try {
