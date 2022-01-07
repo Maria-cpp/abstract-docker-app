@@ -14,6 +14,11 @@ use App\Common\Validator;
 use Comely\Database\Schema;
 use Comely\DataTypes\Integers;
 
+/**
+ * Class Userposts
+ * @package App\API\Controllers
+ */
+
 class Userposts extends AbstractSessionAPIController{
 
     /**

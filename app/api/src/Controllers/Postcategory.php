@@ -11,10 +11,10 @@ use App\Common\Exception\AppException;
 use Comely\Database\Schema;
 
 /**
- * Class Signup
+ * Class Postcategory
  * @package App\API\Controllers
  */
-class PostCategory extends AbstractSessionAPIController
+class Postcategory extends AbstractSessionAPIController
 {
     /**
      * @throws API_Exception
@@ -33,7 +33,7 @@ class PostCategory extends AbstractSessionAPIController
      */
     public function get(): void
     {
-        $postcategory = PostsCategory::List("general");
+        $postcategory = PostsCategory::List("framework");
 
         $this->status(true);
         $this->response()->set("PostCategory", $postcategory);

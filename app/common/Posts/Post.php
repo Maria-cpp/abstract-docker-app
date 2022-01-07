@@ -12,8 +12,8 @@ use Comely\Cache\Exception\CacheException;
 use Comely\DataTypes\Buffer\Binary;
 
 /**
- * Class User
- * @package App\Common\Users
+ * Class Post
+ * @package App\Common\Posts
  */
 class Post extends AbstractAppModel
 {

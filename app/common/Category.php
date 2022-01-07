@@ -7,8 +7,8 @@ use App\Common\Database\AbstractAppModel;
 use App\Common\Database\Primary\PostsCategory;
 
 /**
- * Class Customer
- * @package App\Common\Users
+ * Class Category
+ * @package App\Common
  */
 class Category extends AbstractAppModel
 {
