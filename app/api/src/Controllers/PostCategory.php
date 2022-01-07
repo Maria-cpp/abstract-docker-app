@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\API\Controllers;
 
 use App\Common\Category;
+use App\Common\Database\Primary\PostsCategory;
 use App\Common\Exception\API_Exception;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
@@ -32,10 +33,10 @@ class PostCategory extends AbstractSessionAPIController
      */
     public function get(): void
     {
-        $postcategory = \App\Common\Database\Primary\PostsCategory::List("general");
+        $postcategory = PostsCategory::List("general");
 
         $this->status(true);
-        $this->response()->set("PostsCategory", $postcategory);
+        $this->response()->set("PostCategory", $postcategory);
     }
 
     public function post(): void
