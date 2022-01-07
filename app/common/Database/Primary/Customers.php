@@ -11,7 +11,7 @@ use Comely\Database\Schema\Table\Columns;
 use Comely\Database\Schema\Table\Constraints;
 
 /**
- * Class Users
+ * Class Customers
  * @package App\Common\Database\Primary
  */
 class Customers extends AbstractAppTable
@@ -46,30 +46,7 @@ class Customers extends AbstractAppTable
         $constraints->foreignKey("country")->table(Countries::NAME, "code");
     }
 
-    /**
-     * @param int $id
-     * @param bool $cache
-     * @return Customer
-     * @throws AppException
-     */
 
-    // public static function get(int $id): Customer
-    // {
-    //     $k = Kernel::getInstance();
-
-    //     try {
-    //         return $k->memory()->query(sprintf('customers_%s', $id), self::MODEL)
-    //             ->fetch(function () use ($id) {
-    //                 return self::Find()->col("id", $id)->limit(1)->first();
-    //             });
-    //     } catch (\Exception $e) {
-    //         if (!$e instanceof ORM_ModelNotFoundException) {
-    //             $k->errors()->triggerIfDebug($e, E_USER_WARNING);
-    //         }
-
-    //         throw new AppException('No such customer is available');
-    //     }
-    // }
     public static function List(?string $status = null): array
     {
         $query = 'WHERE 1 ORDER BY `id` ASC';

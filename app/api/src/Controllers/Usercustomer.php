@@ -16,7 +16,7 @@ use Comely\DataTypes\Integers;
 use Comely\Utils\Security\Passwords;
 
 /**
- * Class Signup
+ * Class Usercustomer
  * @package App\API\Controllers
  */
 class Usercustomer extends AbstractSessionAPIController

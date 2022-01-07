@@ -5,11 +5,7 @@ namespace App\Common\Posts;
 
 use App\Common\Database\AbstractAppModel;
 use App\Common\Database\Primary\Posts;
-use App\Common\Exception\AppConfigException;
 use App\Common\Exception\AppException;
-use App\Common\Validator;
-use Comely\Cache\Exception\CacheException;
-use Comely\DataTypes\Buffer\Binary;
 
 /**
  * Class Post
@@ -17,7 +13,7 @@ use Comely\DataTypes\Buffer\Binary;
  */
 class Post extends AbstractAppModel
 {
-    public const TABLE = Posts::NAME;
+    public const TABLE = \App\Common\Database\Primary\Posts::NAME;
     // public const SERIALIZABLE = true;
 
     /** @var int */
