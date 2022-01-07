@@ -9,7 +9,7 @@ use App\Common\Exception\AppException;
 
 /**
  * Class Post
- * @package App\Common\Posts
+ * @package App\Common
  */
 class Post extends AbstractAppModel
 {
