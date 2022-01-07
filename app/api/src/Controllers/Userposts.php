@@ -5,13 +5,13 @@ namespace App\API\Controllers;
 
 use App\Common\Config\ProgramConfig;
 use App\Common\Database\Primary\Posts;
-use App\Common\Posts\Post;
+use App\C
 use App\Common\Exception\API_Exception;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
 use App\Common\Packages\ReCaptcha\ReCaptcha;
+use App\Common\Posts\Post;
 use App\Common\Validator;
-use App\Common\Users\User;
 use Comely\Database\Schema;
 use Comely\DataTypes\Integers;
 
@@ -44,7 +44,6 @@ class Userposts extends AbstractSessionAPIController{
     public function post(): void
     {
         $db = $this->app->db()->primary();
-        Schema::Bind($db, 'App\Common\Database\Primary\Users');
         Schema::Bind($db, 'App\Common\Database\Primary\Posts');
 
         // ReCaptcha Validation
@@ -132,7 +131,7 @@ class Userposts extends AbstractSessionAPIController{
         // Insert Post?
         try {
             $db->beginTransaction();
-            $post = new Post();
+            $post = new Post() ;
             $post->id = 0;
             $post->title = $title;
             $post->content = $content;
