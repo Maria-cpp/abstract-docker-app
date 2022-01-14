@@ -47,7 +47,7 @@ class Posts extends AbstractAppTable
         $cols->int("updated_at")->bytes(4)->unSigned()->nullable();
 
         $cols->string("category")->length(100)
-            ->charset("utf8mb4")->collation("utf8mb4_general_ci")->
+            ->charset("utf8mb4")->collation("utf8mb4_general_ci")->default("general");
 
         $cols->primaryKey("id");
 
