@@ -11,13 +11,13 @@ use Comely\Database\Schema\Table\Columns;
 use Comely\Database\Schema\Table\Constraints;
 
 /**
- * Class Users
+ * Class PostsCategory
  * @package App\Common\Database\Primary
  */
 class PostsCategory extends AbstractAppTable
 {
     public const NAME = 'postcategory';
-    public const MODEL = 'App\Common\Category';
+    public const MODEL = 'App\Common\Category\Category';
     public const BINARY_OBJ_SIZE = 4096;
 
     /**

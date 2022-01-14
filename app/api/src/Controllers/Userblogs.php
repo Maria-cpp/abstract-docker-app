@@ -5,6 +5,7 @@ namespace App\API\Controllers;
 
 use App\Common\Blogs\Blog;
 use App\Common\Exception\API_Exception;
+use App\Common\Database\Primary\Posts;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
 use Comely\Database\Schema;
@@ -33,7 +34,7 @@ class Userblogs extends AbstractSessionAPIController
      */
     public function get(): void
     {
-        $postsdata = \App\Common\Database\Primary\Posts::List("Abstract docker App");
+        $postsdata = Posts::List("Abstract docker App");
 
         $this->status(true);
         $this->response()->set("PostData", $postsdata);
