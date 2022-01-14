@@ -79,8 +79,8 @@ class Userblog extends AbstractSessionAPIController
         try {
             $author_name = trim(strval($this->input()->get("author_name")));
             if (!$author_name) {
-                $author_name="Zeenat Usman";
-            }elseif (strlen($author_name) > 20) {
+                $author_name="ZeenatUsman";
+            }elseif (Integers::Range(strlen($author_name), 5, 30)) {
                 throw new API_Exception('AUTHOR_LEN');
             }elseif (!preg_match('/^[a-z]+(\s[a-z]+)*$/i', $author_name)) {
                 throw new API_Exception('AUTHOR_NAME_INVALID');
@@ -117,7 +117,7 @@ class Userblog extends AbstractSessionAPIController
             $blog->category = $category;
 
             $blog->query()->insert(function () {
-                throw new AppControllerException('Failed to insert user row');
+                throw new AppControllerException('Failed to insert blog row');
             });
 
             $db->commit();

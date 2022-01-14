@@ -64,5 +64,5 @@ CONTENT_REQ | Content is required | Focus on input field
 TITLE_LEN | Title Length should be minimum 5 and max 50 |Focus on input field
 TITLE_REQ | Title is required | Focus on input field 
 TITLE_INVALID | Title contains an illegal character | Focus in input field
-AUTHOR_NAME_INVALID | Author name contains an illegal character | Focus in input field
-AUTHOR_LEN | Author Length should be minimum 3 and max 20 |Focus on input field
+AUTHOR_NAME_INVALID | Author name contains an illegal character | Focus on input field
+AUTHOR_LEN | Author Length should be minimum 5 and max 20 | Focus on input field
