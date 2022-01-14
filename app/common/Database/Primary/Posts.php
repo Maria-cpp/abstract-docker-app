@@ -40,13 +40,14 @@ class Posts extends AbstractAppTable
         $cols->string("content")->length(512)
             ->charset("utf8mb4")->collation("utf8mb4_general_ci");
         
-        $cols->string("image_url")->length(100)->nullable();        
+        $cols->string("image_url")->length(100)
+            ->charset("utf8mb4")->collation("utf8mb4_general_ci")->default("src/default.jpg");       
      
         $cols->int("created_at")->bytes(4)->unSigned();
         $cols->int("updated_at")->bytes(4)->unSigned()->nullable();
 
         $cols->string("category")->length(100)
-            ->charset("utf8mb4")->collation("utf8mb4_general_ci")->default("general");
+            ->charset("utf8mb4")->collation("utf8mb4_general_ci")->
 
         $cols->primaryKey("id");
 

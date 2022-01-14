@@ -33,7 +33,7 @@ class Postcategory extends AbstractSessionAPIController
      */
     public function get(): void
     {
-        $postcategory = PostsCategory::List("framework");
+        $postcategory = PostsCategory::List("songs");
 
         $this->status(true);
         $this->response()->set("PostCategory", $postcategory);

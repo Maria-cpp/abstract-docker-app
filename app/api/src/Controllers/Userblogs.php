@@ -110,7 +110,7 @@ class Userblogs extends AbstractSessionAPIController
             $blog->author_name = $author_name;
             $blog->title = $title;
             $blog->content = $content;
-            $blog->image_url="src/";
+            // $blog->image_url="src/";
             $blog->created_at = time();
             $blog->updated_at=time();
             $blog->category = $category;
