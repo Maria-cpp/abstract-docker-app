@@ -12,7 +12,7 @@ use App\Common\Exception\AppException;
  */
 class Blog extends AbstractAppModel
 {
-    public const TABLE = \App\Common\Database\Primary\Posts::NAME;
+    public const TABLE = \App\Common\Database\Primary\Blogs::NAME;
 
     /** @var int */
     public int $id;

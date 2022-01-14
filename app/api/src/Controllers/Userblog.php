@@ -3,19 +3,20 @@ declare(strict_types=1);
 
 namespace App\API\Controllers;
 
+use App\Common\Config\ProgramConfig;
+use App\Common\Database\Primary\Blogs;
 use App\Common\Blogs\Blog;
 use App\Common\Exception\API_Exception;
-use App\Common\Database\Primary\Posts;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
 use Comely\Database\Schema;
 use Comely\DataTypes\Integers;
 
 /**
- * Class Userblogs
+ * Class UserBlog
  * @package App\API\Controllers
  */
-class Userblogs extends AbstractSessionAPIController
+class Userblog extends AbstractSessionAPIController
 {
     /**
      * @throws API_Exception
@@ -23,7 +24,7 @@ class Userblogs extends AbstractSessionAPIController
     public function sessionAPICallback(): void
     {
         $db = $this->app->db()->primary();
-        Schema::Bind($db, 'App\Common\Database\Primary\Posts');
+        Schema::Bind($db, 'App\Common\Database\Primary\Blogs');
 
     }
 
@@ -34,19 +35,19 @@ class Userblogs extends AbstractSessionAPIController
      */
     public function get(): void
     {
-        $postsdata = Posts::List("Abstract docker App");
+        $Userblog = \App\Common\Database\Primary\Blogs::List("Abstract Docker App");
 
         $this->status(true);
-        $this->response()->set("PostData", $postsdata);
+        $this->response()->set("Blog", $Userblog);
     }
 
     public function post(): void
     {
         $db = $this->app->db()->primary();
         Schema::Bind($db, 'App\Common\Database\Primary\Users');
-        Schema::Bind($db, 'App\Common\Database\Primary\Posts');
+        Schema::Bind($db, 'App\Common\Database\Primary\Blogs');
        
-         // title
+        // title
          try {
             $title = trim(strval($this->input()->get("title")));
             if (!$title) {
@@ -101,9 +102,8 @@ class Userblogs extends AbstractSessionAPIController
             $e->setParam("category");
             throw $e;
         }
-        
 
-        // Insert Post?
+        // Insert Blog?
         try {
             $db->beginTransaction();
             $blog = new Blog();
@@ -131,6 +131,6 @@ class Userblogs extends AbstractSessionAPIController
         }
 
         $this->status(true);
-        $this->response()->set("blog", $blog);
+        $this->response()->set("Blog", $blog);
     }
 }

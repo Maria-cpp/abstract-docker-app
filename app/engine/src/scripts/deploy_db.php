@@ -40,7 +40,7 @@ class deploy_db extends AbstractCLIScript
             'Database\Primary\Users\Tally',
             'Database\Primary\Customers',
             'Database\Primary\Employees',
-            'Database\Primary\Posts',            
+            'Database\Primary\Blogs',            
             'Database\Primary\PostsCategory',
 
         ]);
