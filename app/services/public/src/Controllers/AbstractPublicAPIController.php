@@ -1,12 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Services\Public;
+namespace App\Services\Public\Controllers;
 
 use App\Common\Exception\AppControllerException;
 use App\Common\Kernel\Http\Controllers\AbstractAppController;
 use App\Common\Validator;
 use App\Services\Public\Exception\PublicAPIException;
+use App\Services\Public\PublicAPIService;
 
 /**
  * Class AbstractPublicAPIController

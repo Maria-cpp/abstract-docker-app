@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Common;
 
+use Comely\Security\Passwords;
+use Comely\Utils\Validator\ASCII_Validator;
 use Comely\Utils\Validator\StringValidator;
 
 /**
@@ -43,6 +45,26 @@ class Validator
     }
 
     /**
+     * @param int $minLen
+     * @param int $maxLen
+     * @param int $minStrength
+     * @return ASCII_Validator
+     */
+    public static function Password(int $minLen = 8, int $maxLen = 32, int $minStrength = 4): ASCII_Validator
+    {
+        return \Comely\Utils\Validator\Validator::ASCII()->trim()
+            ->cleanSpaces()
+            ->len(min: $minLen, max: $maxLen)
+            ->setCustomFn(function (string $password) use ($minStrength) {
+                if (Passwords::Strength($password) >= $minStrength) {
+                    return $password;
+                }
+
+                return false;
+            });
+    }
+
+    /**
      * @param mixed $email
      * @return bool
      */
@@ -72,6 +94,15 @@ class Validator
         $match = '/^[\w' . $checkSpaces . $allowed . ']*$/';
 
         return (bool)preg_match($match, $value);
+    }
+
+    /**
+     * @param mixed $phone
+     * @return bool
+     */
+    public static function isValidPhone(mixed $phone): bool
+    {
+        return is_string($phone) && preg_match('/^\+[0-9]{1,6}\.[0-9]{4,16}$/', $phone);
     }
 
     /**
@@ -144,5 +175,19 @@ class Validator
         }
 
         return false;
+    }
+
+    /**
+     * @param object $obj
+     * @return array
+     * @throws \JsonException
+     */
+    public static function JSON_Filter(object $obj): array
+    {
+        return json_decode(
+            json_encode($obj, JSON_THROW_ON_ERROR),
+            true,
+            flags: JSON_THROW_ON_ERROR
+        );
     }
 }
