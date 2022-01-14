@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\API\Controllers;
 
-use App\Common\Category;
+use App\Common\Category\Category;
 use App\Common\Database\Primary\PostsCategory;
 use App\Common\Exception\API_Exception;
 use App\Common\Exception\AppControllerException;

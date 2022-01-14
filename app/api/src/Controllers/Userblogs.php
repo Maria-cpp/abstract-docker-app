@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\API\Controllers;
 
-use App\Common\Blog;
+use App\Common\Blogs\Blog;
 use App\Common\Exception\API_Exception;
 use App\Common\Exception\AppControllerException;
 use App\Common\Exception\AppException;
@@ -107,13 +107,13 @@ class Userblogs extends AbstractSessionAPIController
             $db->beginTransaction();
             $blog = new Blog();
             $blog->id = 0;
+            $blog->author_name = $author_name;
             $blog->title = $title;
             $blog->content = $content;
-            $blog->category = $category;
-            $blog->created_at = time();
-            $blog->author_name = $author_name;
             $blog->image_url="src/";
+            $blog->created_at = time();
             $blog->updated_at=time();
+            $blog->category = $category;
 
             $blog->query()->insert(function () {
                 throw new AppControllerException('Failed to insert user row');
